@@ -1,27 +1,42 @@
+import React, { ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import loginImage from '../../assets/loginImage.png';
-import { useState } from 'react';
 import googleSvg from '../../assets/google.svg';
 
-const Login = () => {
-	const [formData, setFormData] = useState({
+interface FormData {
+	email: string;
+	password: string;
+}
+
+const Login: React.FC = () => {
+	const [formData, setFormData] = useState<FormData>({
 		email: '',
 		password: '',
 	});
 
-	// NOTE handles the changes in the form data
-	const handleChange = (e) => {
+	// Handles the changes in the form data
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setFormData({
 			...formData,
-			[name]: value, // ! Update the state for the corresponding input
+			[name]: value, // Update the state for the corresponding input
 		});
 	};
 
-	// NOTE  Handles the form submission
-	const handleSubmit = (e) => {
+	// Handles the form submission
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault(); // Prevent the form from reloading the page
-		console.log('Form submitted with name:', e);
+
+		if (!formData.email) {
+			console.log('Enter Valid data in Email');
+			return;
+		}
+		if (!formData.password) {
+			console.log('Enter Valid data in Password');
+			return;
+		}
+
+		console.log('Form submitted with:', formData);
 		setFormData({ email: '', password: '' });
 		// Here you could send the data to a server
 	};
@@ -29,7 +44,7 @@ const Login = () => {
 	return (
 		<>
 			<section className='p-5 flex justify-center h-screen gap-32 font-open-sans'>
-				{/* NOTE Login form section */}
+				{/* Login form section */}
 				<aside className='w-96'>
 					<h2 className='mb-8 text-xl'>Welcome Back!</h2>
 
@@ -38,7 +53,7 @@ const Login = () => {
 						logistics needs in one place.
 					</p>
 
-					{/* NOTE Oauth login */}
+					{/* Oauth login */}
 					<button className='mb-5 w-full rounded p-1 border border-grey-900'>
 						<div className='flex gap-3 justify-center'>
 							<img className='w-4' src={googleSvg} alt='google svg' />
@@ -46,14 +61,14 @@ const Login = () => {
 						</div>
 					</button>
 
-					{/* //! seperator  */}
+					{/* Separator */}
 					<div className='text-center mb-5 flex justify-center items-center gap-3'>
 						<div className='w-12 border-b-2'></div>
 						<p>Or</p>
 						<div className='w-12 border-b-2'></div>
 					</div>
 
-					{/* NOTE LOGIN FORM */}
+					{/* Login form */}
 					<form className='mb-8' onSubmit={handleSubmit}>
 						<input
 							className='mb-4 p-2 w-full border border-grey-900 rounded'
@@ -74,9 +89,9 @@ const Login = () => {
 						/>
 						<br />
 
-						{/* NOTE Link to forgotten password */}
+						{/* Link to forgotten password */}
 						<Link to='' className='text-blue-600'>
-							Forget Password ?
+							Forget Password?
 						</Link>
 						<br />
 						<div className='flex justify-center mt-8'>
@@ -94,7 +109,7 @@ const Login = () => {
 					</span>
 				</aside>
 
-				{/* NOTE Login side image */}
+				{/* Login side image */}
 				<aside className='relative'>
 					<img className='h-full' src={loginImage} alt='Login Image' />
 					{/* Grid image */}
