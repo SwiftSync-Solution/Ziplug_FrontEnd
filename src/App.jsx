@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import ErrorPage from './components/errorPage/ErrorPage';
+import Login from './components/Login/Login';
 
 function App() {
 	return (
 		<>
-			<div className='bg-black text-white'>Home page</div>
+			<Routes>
+				<Route path='/login' element={<Login />} />
+				<Route path='*' element={<ErrorPage />} />
+			</Routes>
 		</>
 	);
 }
