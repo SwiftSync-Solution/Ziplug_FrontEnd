@@ -81,7 +81,7 @@ const SignInPage = () => {
 				{/* Link to log in if the user already has an account */}
 				<p className='mt-4 text-center text-gray-600'>
 					Already have an account?{' '}
-					<Link to='/Login' className='text-blue-700 font-bold hover:underline'>
+					<Link to='/login' className='text-blue-700 font-bold hover:underline'>
 						Log In
 					</Link>
 				</p>
