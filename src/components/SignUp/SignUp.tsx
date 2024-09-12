@@ -37,6 +37,7 @@ const SignUpPage: React.FC = () => {
     setErrorMessage("");
     setSuccessMessage("");
 
+    // add "const response to save the user input"
     try {
       await axios.post("Engineer_favor's_api", {
         email: data.email,
@@ -147,7 +148,7 @@ const SignUpPage: React.FC = () => {
             placeholder="Confirm Password"
             className={`block w-full p-2 border ${
               errors.confirmPassword ? "border-red-500" : "border-gray-300 mb-4"
-            } rounded focus:ring-2 focus:ring-b-400`}
+            } rounded focus:ring-2 focus:ring-blue-400`}
             {...register("confirmPassword", {
               required: "Please confirm your password",
               validate: (value) =>
