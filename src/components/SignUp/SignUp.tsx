@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import axios from "axios"; // For API requests
+import axios from "axios";
+import { useGoogleLogin } from "@react-oauth/google";
 import googleSvg from "../../assets/google.svg";
 import SignUpImage from "../../assets/SignUpImage.png";
 
@@ -30,6 +31,60 @@ const SignUpPage: React.FC = () => {
   // Display success message on signup
 
   const password = watch("password");
+
+  // Google Login success handler
+  const handleGoogleLoginSuccess = async (tokenResponse: any) => {
+    try {
+      const accessToken = tokenResponse.access_token;
+
+      // Send the access token to your server for verification/authentication
+      const response = await axios.post("/api/google-auth", {
+        token: accessToken,
+      });
+
+      // Handle success (e.g., store JWT, navigate user to dashboard)
+      console.log("Google OAuth Success:", response.data);
+      setSuccessMessage("Google login successful! You're now logged in.");
+    } catch (error) {
+      console.error("Google OAuth Error:", error);
+      setErrorMessage("Failed to sign in with Google. Please try again.");
+    }
+  };
+
+  // Google Login error handler
+  const handleGoogleLoginError = (error: any) => {
+    console.error("Google OAuth Error:", error);
+    setErrorMessage("Google login failed. Please try again.");
+  };
+
+  // Set up the Google login hook
+  const loginWithGoogle = useGoogleLogin({
+    onSuccess: handleGoogleLoginSuccess,
+    onError: handleGoogleLoginError,
+  });
+
+  // // Google Login Function
+  // const loginWithGoogle = useGoogleLogin({
+  //   onSuccess: async (tokenResponse) => {
+  //     try {
+  //       const accessToken = tokenResponse.access_token;
+
+  //       // Send the access token to your server for verification
+  //       const response = await axios.post("/api/google-auth", {
+  //         token: accessToken,
+  //       });
+
+  //       console.log("Google OAuth Success:", response.data);
+  //       setSuccessMessage("Google login successful! You're now logged in.");
+  //     } catch (error) {
+  //       console.error("Google OAuth Error:", error);
+  //       setErrorMessage("Failed to sign in with Google. Please try again.");
+  //     }
+  //   },
+  //   onError: () => {
+  //     setErrorMessage("Google sign-in failed. Please try again.");
+  //   },
+  // });
 
   // Function to handle form submission and send data to API
   const onSubmit = async (data: SignupFormData) => {
@@ -93,7 +148,11 @@ const SignUpPage: React.FC = () => {
         <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
           {/* Google sign-up button */}
 
-          <button className="mb-4 p-2 w-full border border-b-900 rounded flex justify-center items-center shadow-sm hover:bg-gray-50">
+          <button
+            type="button"
+            onClick={() => loginWithGoogle}
+            className="mb-4 p-2 w-full border border-b-900 rounded flex justify-center items-center shadow-sm hover:bg-gray-50"
+          >
             <img className="w-5 h-5 mr-2" src={googleSvg} alt="Google logo" />
             Sign up with Google
           </button>
