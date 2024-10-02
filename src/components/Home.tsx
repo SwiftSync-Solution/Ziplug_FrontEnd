@@ -1,17 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import React from 'react';
+import Footer from './Footer/Footer';
+import Contact from './Contact/Contact';
 
-const Home = () => {
-  return (
-    <div>
-      <p>Login</p>
-      <br />
-      <Link to="/login">Login Link</Link>
-      <br />
-      <Link to="/register">SignUp</Link>
-      <br />
-      <Link to="/dashboard">Dashboard</Link>
-    </div>
-  );
+const Home: React.FC = () => {
+	return (
+		<>
+			<div>
+				<p>Login</p>
+				<Link to='/login'>Login Link</Link>
+				<br />
+				<Link to='/register'>SignUp</Link>
+			</div>
+			<Contact />
+			<Footer />
+		</>
+	);
 };
-
 export default Home;
