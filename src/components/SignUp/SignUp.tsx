@@ -63,29 +63,6 @@ const SignUpPage: React.FC = () => {
     onError: handleGoogleLoginError,
   });
 
-  // // Google Login Function
-  // const loginWithGoogle = useGoogleLogin({
-  //   onSuccess: async (tokenResponse) => {
-  //     try {
-  //       const accessToken = tokenResponse.access_token;
-
-  //       // Send the access token to your server for verification
-  //       const response = await axios.post("/api/google-auth", {
-  //         token: accessToken,
-  //       });
-
-  //       console.log("Google OAuth Success:", response.data);
-  //       setSuccessMessage("Google login successful! You're now logged in.");
-  //     } catch (error) {
-  //       console.error("Google OAuth Error:", error);
-  //       setErrorMessage("Failed to sign in with Google. Please try again.");
-  //     }
-  //   },
-  //   onError: () => {
-  //     setErrorMessage("Google sign-in failed. Please try again.");
-  //   },
-  // });
-
   // Function to handle form submission and send data to API
   const onSubmit = async (data: SignupFormData) => {
     setLoading(true);
