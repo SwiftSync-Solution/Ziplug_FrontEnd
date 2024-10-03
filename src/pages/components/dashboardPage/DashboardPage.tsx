@@ -78,17 +78,26 @@ const DashboardContent: React.FC = () => {
 
 			{/* Order History */}
 			<div>
-				<h3 className='text-lg font-medium'>Order History</h3>
-				{orderHistory.length > 0 ? (
+				<h3 className='text-lg font-bold'>Order History</h3>
+				{/* Filter & Download */}
+				<div className='flex  gap-4 my-4'>
+					<button className='px-4 py-2 bg-blue-600 text-white rounded'>
+						Filter
+					</button>
+					<button className='px-4 py-2 bg-green-600 text-white rounded'>
+						Download PDF
+					</button>
+				</div>
+				{orderHistory.length >= 0 ? (
 					<table className='min-w-full bg-white'>
 						<thead>
-							<tr>
-								<th>Status</th>
-								<th>Order ID</th>
-								<th>Origin</th>
-								<th>Destination</th>
-								<th>Delivery Date</th>
-								<th>Shipping Cost</th>
+							<tr className='border border-black'>
+								<th className='border border-black'>Status</th>
+								<th className='border border-black'>Order ID</th>
+								<th className='border border-black'>Origin</th>
+								<th className='border border-black'>Destination</th>
+								<th className='border border-black'>Delivery Date</th>
+								<th className='border border-black'>Shipping Cost</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -102,21 +111,21 @@ const DashboardContent: React.FC = () => {
 									<td>${order.shippingCost}</td>
 								</tr>
 							))}
+
+							{/* // ! remove after backend works fine */}
+							<tr className='text-center'>
+								<td className='border border-black'>success</td>
+								<td className='border border-black'>1234</td>
+								<td className='border border-black'>lagos</td>
+								<td className='border border-black'>ibadan</td>
+								<td className='border border-black'>2nd january 2024</td>
+								<td className='border border-black'>$300</td>
+							</tr>
 						</tbody>
 					</table>
 				) : (
 					<p className='text-gray-500'>0 Order History</p>
 				)}
-			</div>
-
-			{/* Filter & Download */}
-			<div className='flex space-x-4'>
-				<button className='px-4 py-2 bg-blue-600 text-white rounded'>
-					Filter
-				</button>
-				<button className='px-4 py-2 bg-green-600 text-white rounded'>
-					Download PDF
-				</button>
 			</div>
 		</div>
 	);
