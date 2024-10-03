@@ -19,7 +19,7 @@ const DashboardPage: React.FC = () => {
     null
   );
   const [orderHistory, setOrderHistory] = useState<ShipmentData[]>([]);
-  const [loading, setLoading] = useState(true);
+//   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +35,7 @@ const DashboardPage: React.FC = () => {
       } catch (error) {
         console.error("Error fetching shipment data", error);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
 
