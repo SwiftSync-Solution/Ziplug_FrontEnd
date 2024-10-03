@@ -5,7 +5,7 @@ import Login from './components/Login/Login';
 import Home from './components/Home';
 import SignUp from './components/SignUp/SignUp';
 import DashBoard from './pages/components/DashBoard/Dashboard';
-
+import PlaceOrder from './pages/components/PlaceOrder/PlaceOrder';
 function App() {
 	return (
 		<>
@@ -15,7 +15,7 @@ function App() {
 				<Route path='/register' element={<SignUp />} />
 				<Route path='/dashboard' element={<DashBoard />} />
 
-				<Route path='/place-order' element={<DashBoard />} />
+				<Route path='/place-order' element={<PlaceOrder />} />
 
 				<Route path='/track-shipment' element={<DashBoard />} />
 
