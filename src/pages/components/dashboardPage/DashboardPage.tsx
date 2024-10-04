@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProfileHeader from "../ProfileHeader/ProfileHeader";
+// import NotificationsIcon from "@mui/icons-material/Notifications";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import { Link } from "react-router-dom";
 
 interface ShipmentData {
   status: string;
@@ -50,7 +53,10 @@ const DashboardContent: React.FC = () => {
       {/* Current Shipment & Scheduled Pickup */}
       <div className="flex space-x-6">
         <div className="w-1/2 p-4 bg-white shadow rounded">
-          <h3 className="text-lg font-medium">Current Shipment</h3>
+          <h3 className="text-lg font-medium">
+            Current Shipment{" "}
+            <NotificationsNoneIcon className="scale-150 border rounded float-right" />
+          </h3>
           {currentShipment ? (
             <div>
               <p>Order ID: {currentShipment.orderId || "12345"}</p>
@@ -59,20 +65,41 @@ const DashboardContent: React.FC = () => {
               <p>Delivery Date: {currentShipment.deliveryDate || "9999"}</p>
             </div>
           ) : (
-            <p>No current shipment</p>
+            <p className="mb-4">
+              Ready to ship? Place an order and get your package on its way!
+            </p>
           )}
+          <button
+            type="button"
+            className="px-4 py-0.5 bg-blue-600 text-white rounded float-right"
+          >
+            <Link to="/place-order">Place Order</Link>
+          </button>
         </div>
 
         <div className="w-1/2 p-4 bg-white shadow rounded">
-          <h3 className="text-lg font-medium">Scheduled Pickups</h3>
+          <h3 className="text-lg font-medium">
+            Scheduled Pickups{" "}
+            <NotificationsNoneIcon className="scale-150 border rounded float-right" />
+          </h3>
           {scheduledPickup ? (
             <div>
               <p>Order ID: {scheduledPickup.orderId}</p>
               <p>Pickup Date: {scheduledPickup.deliveryDate}</p>
             </div>
           ) : (
-            <p>No scheduled pickups</p>
+            <p className="mb-4">
+              Easily schedule your pickup and let us handle the rest!
+            </p>
           )}
+          <div>
+            <button
+              type="button"
+              className="px-4 py-0.5 bg-blue-600 text-white rounded float-right"
+            >
+              <Link to="/place-order">Schedule</Link>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -80,7 +107,7 @@ const DashboardContent: React.FC = () => {
       <div>
         <h3 className="text-lg font-bold">Order History</h3>
         {/* Filter & Download */}
-        <div className="flex  gap-4 my-4">
+        <div className="flex  gap-4 my-4 float-right">
           <button className="px-4 py-2 bg-blue-600 text-white rounded">
             Filter
           </button>
