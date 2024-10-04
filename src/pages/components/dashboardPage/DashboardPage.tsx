@@ -46,7 +46,9 @@ const DashboardContent: React.FC = () => {
 	return (
 		<div className='space-y-6'>
 			{/* PROFILE HEADER */}
-			<ProfileHeader />
+			<ProfileHeader
+				content={<h2 className='text-2xl font-semibold'>Welcome, Aisha</h2>}
+			/>
 			{/* Current Shipment & Scheduled Pickup */}
 			<div className='flex space-x-6'>
 				<div className='w-1/2 p-4 bg-white shadow rounded'>

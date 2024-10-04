@@ -3,11 +3,11 @@ import Stack from '@mui/material/Stack';
 import userImage from '../../../assets/3.jpg';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
-const ProfileHeader = () => {
+const ProfileHeader = (prop) => {
 	return (
 		<>
 			<header className='flex justify-between items-center '>
-				<h2 className='text-2xl font-semibold'>Welcome, Aisha</h2>
+				{prop.content}
 				<div className='flex items-center gap-7'>
 					<NotificationsIcon className='scale-150 border rounded' />
 					<Stack>
