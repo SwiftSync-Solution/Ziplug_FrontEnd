@@ -6,6 +6,7 @@ import AddLocationIcon from "@mui/icons-material/AddLocation";
 import HelpIcon from "@mui/icons-material/Help";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useState } from "react";
 
 const SideBar: React.FC = () => {
   return (
@@ -32,43 +33,83 @@ const SideBar: React.FC = () => {
 };
 
 const NavLink = () => {
+  const [activeLink, setActiveLink] = useState<string | null>(null);
+
+  const handleLinkClick = (
+    link: string,
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    event.preventDefault(); // Prevent the default anchor click behavior
+    setActiveLink(link);
+  };
+
   return (
     <nav className="space-y-4">
-      <Link
-        to="/dashboard"
-        className="flex items-center space-x-2 hover:bg-white hover:text-black hover:rounded p-1"
-      >
-        <HomeIcon />
-        <span>Home</span>
-      </Link>
-      <Link
-        to="/place-order"
-        className="flex items-center space-x-2 hover:bg-white hover:text-black hover:rounded p-1"
-      >
-        <LocalShippingIcon />
-        <span>Place Order</span>
-      </Link>
-      <Link
-        to="/track-shipment"
-        className="flex items-center space-x-2 hover:bg-white hover:text-black hover:rounded p-1"
-      >
-        <AddLocationIcon />
-        <span>Track Shipment</span>
-      </Link>
-      <Link
-        to="/help"
-        className="flex items-center space-x-2 hover:bg-white hover:text-black hover:rounded p-1"
-      >
-        <HelpIcon />
-        <span>Help</span>
-      </Link>
-      <Link
-        to="/settings"
-        className="flex items-center space-x-2 hover:bg-white hover:text-black hover:rounded p-1"
-      >
-        <SettingsIcon />
-        <span>Settings</span>
-      </Link>
+      <div onClick={(event) => handleLinkClick("link1", event)}>
+        <Link
+          to="/dashboard"
+          className={`p-2 rounded-md ${
+            activeLink === "link1"
+              ? "flex items-center space-x-2 bg-white text-black rounded p-1"
+              : "flex items-center space-x-2"
+          }`}
+        >
+          <HomeIcon />
+          <span>Home</span>
+        </Link>
+      </div>
+
+      <div onClick={(event) => handleLinkClick("link2", event)}>
+        <Link
+          to="/place-order"
+          className={`p-2 rounded-md ${
+            activeLink === "link2"
+              ? "flex items-center space-x-2 bg-white text-black rounded p-1"
+              : "flex items-center space-x-2"
+          }`}
+        >
+          <LocalShippingIcon />
+          <span>Place Order</span>
+        </Link>
+      </div>
+
+      <div onClick={(event) => handleLinkClick("link3", event)}>
+        <Link
+          to="/track-shipment"
+          className={`p-2 rounded-md ${
+            activeLink === "link3"
+              ? "flex items-center space-x-2 bg-white text-black rounded p-1"
+              : "flex items-center space-x-2"
+          }`}
+        >
+          <AddLocationIcon />
+          <span>Track Shipment</span>
+        </Link>
+      </div>
+
+      <div onClick={(event) => handleLinkClick("link4", event)}>
+        <Link
+          to="/help"
+          className={`p-2 rounded-md ${
+            activeLink === "link4"
+              ? "flex items-center space-x-2 bg-white text-black rounded p-1"
+              : "flex items-center space-x-2"
+          }`}
+        >
+          <HelpIcon />
+          <span>Help</span>
+        </Link>
+      </div>
+
+      <div>
+        <Link
+          to="/settings"
+          className="flex items-center space-x-2 hover:bg-white hover:text-black hover:rounded p-1"
+        >
+          <SettingsIcon />
+          <span>Settings</span>
+        </Link>
+      </div>
     </nav>
   );
 };

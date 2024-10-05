@@ -17,9 +17,7 @@ function App() {
         <Route path="/dashboard" element={<DashBoard />} />
 
         <Route path="/place-order" element={<PlaceOrder />} />
-
         <Route path="/track-shipment" element={<TrackShipment />} />
-
         <Route path="/help" element={<DashBoard />} />
         <Route path="/settings" element={<DashBoard />} />
         <Route path="*" element={<ErrorPage />} />

@@ -1,6 +1,4 @@
-import ProfileHeader from "../ProfileHeader/ProfileHeader";
 import SideBar from "../sideNav/SideBar";
-
 const TrackShipment = () => {
   return (
     <>
@@ -9,9 +7,7 @@ const TrackShipment = () => {
         <SideBar />
 
         {/* Main Content */}
-        <main className="w-full p-8">
-          <ProfileHeader />
-        </main>
+        <main className="w-full p-8">{/* <ProfileHeader /> */}</main>
       </section>
     </>
   );
