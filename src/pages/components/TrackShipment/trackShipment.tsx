@@ -77,7 +77,7 @@ const TrackShipment = () => {
               </div>
             }
           />
-          <div className="shipment-dashboard grid grid-cols-2 gap-4 mt-10 h-screen scroll-smooth flex">
+          <div className="shipment-dashboard grid grid-cols-2 gap-4 mt-10 h-screen scroll-smooth">
             {/* Track Shipment Section */}
             <div className="track-shipment-section border p-4 rounded-lg shadow-md">
               <h2 className="text-xl font-bold mb-4">Track Shipment</h2>
