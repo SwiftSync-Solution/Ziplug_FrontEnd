@@ -55,7 +55,10 @@ const DashboardContent: React.FC = () => {
       {/* Current Shipment & Scheduled Pickup */}
       <div className="flex space-x-6">
         <div className="w-1/2 p-4 bg-white shadow rounded">
-          <h3 className="text-lg font-medium">Current Shipment</h3>
+          <h3 className="text-lg font-medium">
+            Current Shipment
+            <NotificationsNoneIcon className="scale-150 border rounded float-right" />
+          </h3>
           {currentShipment ? (
             <div>
               <p>Order ID: {currentShipment.orderId || "12345"}</p>
