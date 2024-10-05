@@ -1,20 +1,20 @@
-import SideBar from '../sideNav/SideBar';
-import ProfileHeader from '../ProfileHeader/ProfileHeader';
+import SideBar from "../sideNav/SideBar";
+import ProfileHeader from "../ProfileHeader/ProfileHeader";
 
 const PlaceOrder = () => {
-	return (
-		<>
-			<section className='flex'>
-				{/* SIDEBAR */}
-				<SideBar />
+  return (
+    <>
+      <section className="flex">
+        {/* SIDEBAR */}
+        <SideBar />
 
-				{/* Main Content */}
-				<main className='w-full p-8'>
-					<ProfileHeader />
-				</main>
-			</section>
-		</>
-	);
+        {/* Main Content */}
+        <main className="w-full p-8">
+          <ProfileHeader />
+        </main>
+      </section>
+    </>
+  );
 };
 
 export default PlaceOrder;

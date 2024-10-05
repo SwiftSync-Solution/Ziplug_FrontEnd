@@ -1,7 +1,7 @@
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import userImage from "../../../assets/3.jpg";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+// import NotificationsIcon from "@mui/icons-material/Notifications";
 import { NotificationsNoneOutlined } from "@mui/icons-material";
 
 const ProfileHeader = () => {

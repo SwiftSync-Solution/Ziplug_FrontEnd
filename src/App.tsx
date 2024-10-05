@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import SignUp from "./components/SignUp/SignUp";
 import DashBoard from "./pages/components/DashBoard/Dashboard";
 import PlaceOrder from "./pages/components/PlaceOrder/PlaceOrder";
+import TrackShipment from "./pages/components/TrackShipment/trackShipment";
 function App() {
   return (
     <>
@@ -17,7 +18,7 @@ function App() {
 
         <Route path="/place-order" element={<PlaceOrder />} />
 
-        <Route path="/track-shipment" element={<DashBoard />} />
+        <Route path="/track-shipment" element={<TrackShipment />} />
 
         <Route path="/help" element={<DashBoard />} />
         <Route path="/settings" element={<DashBoard />} />
