@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ProfileHeader from '../ProfileHeader/ProfileHeader';
+// import NotificationsIcon from "@mui/icons-material/Notifications";
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import { Link } from 'react-router-dom';
 
 interface ShipmentData {
 	status: string;
@@ -66,15 +69,27 @@ const DashboardContent: React.FC = () => {
 				</div>
 
 				<div className='w-1/2 p-4 bg-white shadow rounded'>
-					<h3 className='text-lg font-medium'>Scheduled Pickups</h3>
+					<h3 className='text-lg font-medium'>
+						Scheduled Pickups{' '}
+						<NotificationsNoneIcon className='scale-150 border rounded float-right' />
+					</h3>
 					{scheduledPickup ? (
 						<div>
 							<p>Order ID: {scheduledPickup.orderId}</p>
 							<p>Pickup Date: {scheduledPickup.deliveryDate}</p>
 						</div>
 					) : (
-						<p>No scheduled pickups</p>
+						<p className='mb-4'>
+							Easily schedule your pickup and let us handle the rest!
+						</p>
 					)}
+					<div>
+						<button
+							type='button'
+							className='px-4 py-0.5 bg-blue-600 text-white rounded float-right'>
+							<Link to='/place-order'>Schedule</Link>
+						</button>
+					</div>
 				</div>
 			</div>
 
@@ -82,7 +97,7 @@ const DashboardContent: React.FC = () => {
 			<div>
 				<h3 className='text-lg font-bold'>Order History</h3>
 				{/* Filter & Download */}
-				<div className='flex  gap-4 my-4'>
+				<div className='flex  gap-4 my-4 float-right'>
 					<button className='px-4 py-2 bg-blue-600 text-white rounded'>
 						Filter
 					</button>
@@ -93,13 +108,13 @@ const DashboardContent: React.FC = () => {
 				{orderHistory.length >= 0 ? (
 					<table className='min-w-full bg-white'>
 						<thead>
-							<tr className='border border-black'>
-								<th className='border border-black'>Status</th>
-								<th className='border border-black'>Order ID</th>
-								<th className='border border-black'>Origin</th>
-								<th className='border border-black'>Destination</th>
-								<th className='border border-black'>Delivery Date</th>
-								<th className='border border-black'>Shipping Cost</th>
+							<tr className='border border-gray-500'>
+								<th className='border border-gray-500'>Status</th>
+								<th className='border border-gray-500'>Order ID</th>
+								<th className='border border-gray-500'>Origin</th>
+								<th className='border border-gray-500'>Destination</th>
+								<th className='border border-gray-500'>Delivery Date</th>
+								<th className='border border-gray-500'>Shipping Cost</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -116,12 +131,12 @@ const DashboardContent: React.FC = () => {
 
 							{/* // ! remove after backend works fine */}
 							<tr className='text-center'>
-								<td className='border border-black'>success</td>
-								<td className='border border-black'>1234</td>
-								<td className='border border-black'>lagos</td>
-								<td className='border border-black'>ibadan</td>
-								<td className='border border-black'>2nd january 2024</td>
-								<td className='border border-black'>$300</td>
+								<td className='border border-gray-500'>success</td>
+								<td className='border border-gray-500'>1234</td>
+								<td className='border border-gray-500'>lagos</td>
+								<td className='border border-gray-500'>ibadan</td>
+								<td className='border border-gray-500'>2nd january 2024</td>
+								<td className='border border-gray-500'>$300</td>
 							</tr>
 						</tbody>
 					</table>
