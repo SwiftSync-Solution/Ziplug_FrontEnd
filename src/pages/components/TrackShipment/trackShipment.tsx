@@ -21,7 +21,7 @@ interface OrderData {
 const TrackShipment = () => {
   const [trackingID, setTrackingID] = useState<string>("");
   const [currentOrder, setCurrentOrder] = useState<OrderData | null>(null);
-  const [defaultPosition] = useState<[number, number]>([9.082, 8.6753]); // Default to Nigeria
+  const [defaultPosition] = useState<[number, number]>([6.5244, 3.3792]); // Default to Lagos
   const [driverPosition, setDriverPosition] = useState<[number, number] | null>(
     null
   );
