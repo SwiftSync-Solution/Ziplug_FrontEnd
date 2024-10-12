@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import resetBg from '../../../assets/ResetImage.png';
 import resetBgOvelay from '../../../assets/overlay.png';
 
