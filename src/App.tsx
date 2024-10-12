@@ -9,6 +9,7 @@ import PlaceOrder from './pages/components/PlaceOrder/PlaceOrder';
 import TrackShipment from './pages/components/TrackShipment/trackShipment';
 import Help from './pages/components/Help/Help';
 import Settings from './pages/components/SettingsComp/Settings';
+import ResetPassword from './pages/components/ResetPassword/ResetPassword';
 
 function App() {
 	return (
@@ -22,6 +23,8 @@ function App() {
 				<Route path='/track-shipment' element={<TrackShipment />} />
 				<Route path='/help' element={<Help />} />
 				<Route path='/settings' element={<Settings />} />
+				<Route path='/resetPassword' element={<ResetPassword />} />
+
 				<Route path='*' element={<ErrorPage />} />
 			</Routes>
 		</>
