@@ -21,7 +21,7 @@ interface OrderData {
 const TrackShipment = () => {
   const [trackingID, setTrackingID] = useState<string>("");
   const [currentOrder, setCurrentOrder] = useState<OrderData | null>(null);
-  const [defaultPosition] = useState<[number, number]>([9.082, 8.6753]); // Default to Nigeria
+  const [defaultPosition] = useState<[number, number]>([6.5244, 3.3792]); // Default to Lagos
   const [driverPosition, setDriverPosition] = useState<[number, number] | null>(
     null
   );
@@ -77,7 +77,7 @@ const TrackShipment = () => {
               </div>
             }
           />
-          <div className="shipment-dashboard grid grid-cols-2 gap-4 mt-10 h-screen scroll-smooth flex">
+          <div className="shipment-dashboard grid grid-cols-2 gap-4 mt-10 h-screen scroll-smooth">
             {/* Track Shipment Section */}
             <div className="track-shipment-section border p-4 rounded-lg shadow-md">
               <h2 className="text-xl font-bold mb-4">Track Shipment</h2>

@@ -91,13 +91,17 @@ const SignUpPage: React.FC = () => {
     setLoading(true);
     setErrorMessage("");
     setSuccessMessage("");
+    // /api/create-user/*{placeholder}*
 
     // add "const response to save the user input"
     try {
-      await axios.post("Engineer_favor's_api", {
-        email: data.email,
-        password: data.password,
-      });
+      await axios.post(
+        "https://ziplogistics.pythonanywhere.com/api/create-user/customer",
+        {
+          email: data.email,
+          password: data.password,
+        }
+      );
 
       // On successful sign-up
       setSuccessMessage("Account created successfully!");
