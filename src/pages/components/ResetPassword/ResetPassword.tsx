@@ -1,5 +1,6 @@
 import resetBg from '../../../assets/ResetImage.png';
 import resetBgOvelay from '../../../assets/overlay.png';
+import { useState } from 'react';
 
 const ResetPassword = () => {
 	// State for the form inputs
