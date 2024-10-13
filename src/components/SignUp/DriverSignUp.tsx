@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useGoogleLogin } from "@react-oauth/google";
 import googleSvg from "../../assets/google.svg";
-import SignUpImage from "../../assets/SignUpImage.png";
+import driver from "../../assets/driver.png";
 
 // Define the shape of the form data
 interface SignupFormData {
@@ -15,7 +15,7 @@ interface SignupFormData {
   confirmPassword: string;
 }
 
-const SignUpPage: React.FC = () => {
+const DriverSignUpPage: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -73,7 +73,7 @@ const SignUpPage: React.FC = () => {
     // add "const response to save the user input"
     try {
       await axios.post(
-        "https://ziplogistics.pythonanywhere.com/api/create-user/customer",
+        "https://ziplogistics.pythonanywhere.com/api/create-user/driver",
         {
           email: data.email,
           password: data.password,
@@ -105,16 +105,19 @@ const SignUpPage: React.FC = () => {
   };
 
   return (
-    <section className="p-5 ml-0 mr-0 flex justify-center h-screen gap-32 font-open-sans">
-      <aside className="w-96">
+    <div className="flex h-screen">
+      <div className="image-side w-1/2 bg-blend-overlay">
+        <img src={driver} alt="Container" className="h-full object-cover" />
+      </div>
+      <div className="form-side w-1/3 flex flex-col justify-center p-8">
         {/* Heading for the sign-up form */}
 
         <h2 className="text-2xl text-b-700 text-left mt-4 mb-5">
           Join Zip Logistics Today!
         </h2>
         <p className="mb-8 text-xl leading-9 font-semibold">
-          Experience seamless, fast, and reliable shipping with an account
-          tailored to your logistics needs
+          Stay in control, track every delivery, and drive with confidence – all
+          from one platform.
         </p>
 
         {/* Display error or success messages */}
@@ -220,29 +223,9 @@ const SignUpPage: React.FC = () => {
             Log In
           </Link>
         </p>
-      </aside>
-
-      {/* Side image */}
-
-      <aside className="relative">
-        <img className="h-full" src={SignUpImage} alt="SignUp" />
-        <div className="absolute top-0 w-full items-center place-items-center text-white grid grid-cols-3 h-full gap-2">
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-          <article className="w-full h-full rounded-lg outline outline-8"></article>
-        </div>
-      </aside>
-    </section>
+      </div>
+    </div>
   );
 };
 
-export default SignUpPage;
+export default DriverSignUpPage;
