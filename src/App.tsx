@@ -9,6 +9,8 @@ import PlaceOrder from "./pages/components/PlaceOrder/PlaceOrder";
 import TrackShipment from "./pages/components/TrackShipment/trackShipment";
 import Notifications from "./pages/components/notification/Notification";
 import ResetPassword from "./pages/components/Reset/ResetPassword";
+import NewPassword from "./pages/components/Reset/Passwords";
+
 function App() {
   return (
     <>
@@ -25,6 +27,7 @@ function App() {
         <Route path="/notification" element={<Notifications />} />
 
         <Route path="/reset" element={<ResetPassword />} />
+        <Route path="/new-password" element={<NewPassword />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
