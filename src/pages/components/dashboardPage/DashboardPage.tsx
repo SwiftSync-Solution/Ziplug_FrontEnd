@@ -16,6 +16,7 @@ interface ShipmentData {
 }
 
 const DashboardContent: React.FC = () => {
+  const [userName, setUserName] = useState("");
   const [currentShipment, setCurrentShipment] = useState<ShipmentData | null>(
     null
   );
@@ -29,10 +30,12 @@ const DashboardContent: React.FC = () => {
     const fetchData = async () => {
       try {
         // Fetch data from backend
+        const response = await axios.get("/api/user-profile");
         const currentResponse = await axios.get("/api/current-shipment");
         const pickupResponse = await axios.get("/api/scheduled-pickup");
         const historyResponse = await axios.get("/api/order-history");
 
+        setUserName(response.data.name);
         setCurrentShipment(currentResponse.data);
         setScheduledPickup(pickupResponse.data);
         setOrderHistory(historyResponse.data);
@@ -50,7 +53,9 @@ const DashboardContent: React.FC = () => {
     <div className="space-y-6">
       {/* PROFILE HEADER */}
       <ProfileHeader
-        content={<h2 className="text-2xl font-semibold">Welcome, Aisha</h2>}
+        content={
+          <h2 className="text-2xl font-semibold">Welcome, {userName}</h2>
+        }
       />
       {/* Current Shipment & Scheduled Pickup */}
       <div className="flex space-x-6">

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useGoogleLogin } from "@react-oauth/google";
 import googleSvg from "../../assets/google.svg";
@@ -64,6 +64,7 @@ const SignUpPage: React.FC = () => {
   });
 
   // Function to handle form submission and send data to API
+  const navigate = useNavigate();
   const onSubmit = async (data: SignupFormData) => {
     setLoading(true);
     setErrorMessage("");
@@ -82,6 +83,7 @@ const SignUpPage: React.FC = () => {
 
       // On successful sign-up
       setSuccessMessage("Account created successfully!");
+      navigate("/dashboard");
     } catch (error: unknown) {
       // Handle errors from API
       if (axios.isAxiosError(error) && error.response && error.response.data) {
