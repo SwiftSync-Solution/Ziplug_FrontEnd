@@ -10,7 +10,7 @@ const Home: React.FC = () => {
         <p>Login</p>
         <Link to="/login">Login Link</Link>
         <br />
-        <Link to="/register">SignUp</Link>
+        <Link to="/sign-up">SignUp</Link>
       </div>
       <Contact />
       <Footer />
