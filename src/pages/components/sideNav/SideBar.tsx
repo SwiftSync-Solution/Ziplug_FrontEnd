@@ -6,6 +6,7 @@ import AddLocationIcon from "@mui/icons-material/AddLocation";
 import HelpIcon from "@mui/icons-material/Help";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import ziplugs from "../../../assets/Ziplugs-04.png";
 import { useState } from "react";
 
 const SideBar: React.FC = () => {
@@ -13,14 +14,17 @@ const SideBar: React.FC = () => {
     <>
       <div className="flex h-screen">
         {/* Sidebar */}
-        <aside className="bg-blue-900 w-64 text-white p-4 font-bold text-2xl">
-          <div className="h-[90vh] grid place-content-center">
+        <aside className="bg-[#0a1172] w-64 text-white p-4 font-bold text-2xl">
+          <div className="top-15">
+            <img src={ziplugs} alt="Ziplugs logo" />
+          </div>
+          <div className="mt-16 grid place-content-center">
             {/* Sidebar Navigation */}
             <NavLink />
           </div>
 
           {/* Log Out Button */}
-          <div className="pl-4 hover:bg-white hover:text-black hover:rounded">
+          <div className="absolute bottom-0 pl-4 hover:bg-white hover:text-[#0a1172] hover:rounded">
             <Link to="/logout" className="flex items-center space-x-2">
               <LogoutIcon />
               <span>Log Out</span>
@@ -48,9 +52,9 @@ const NavLink = () => {
       <div onClick={(event) => handleLinkClick("link1", event)}>
         <Link
           to="/dashboard"
-          className={`p-2 rounded-md ${
+          className={`flex items-center space-x-2 hover:bg-white hover:text-[#0a1172] hover:rounded p-1 ${
             activeLink === "link1"
-              ? "flex items-center space-x-2 bg-white text-black rounded p-1"
+              ? "flex items-center space-x-2 hover:bg-white hover:text-[#0a1172] hover:rounded p-1"
               : "flex items-center space-x-2"
           }`}
         >
@@ -62,9 +66,9 @@ const NavLink = () => {
       <div onClick={(event) => handleLinkClick("link2", event)}>
         <Link
           to="/place-order"
-          className={`p-2 rounded-md ${
+          className={`flex items-center space-x-2 hover:bg-white hover:text-[#0a1172] hover:rounded p-1 ${
             activeLink === "link2"
-              ? "flex items-center space-x-2 bg-white text-black rounded p-1"
+              ? "flex items-center space-x-2 hover:bg-white hover:text-[#0a1172] hover:rounded p-1"
               : "flex items-center space-x-2"
           }`}
         >
@@ -76,9 +80,9 @@ const NavLink = () => {
       <div onClick={(event) => handleLinkClick("link3", event)}>
         <Link
           to="/track-shipment"
-          className={`p-2 rounded-md ${
+          className={`flex items-center space-x-2 hover:bg-white hover:text-[#0a1172] hover:rounded p-1 ${
             activeLink === "link3"
-              ? "flex items-center space-x-2 bg-white text-black rounded p-1"
+              ? "flex items-center space-x-2 hover:bg-white hover:text-[#0a1172] hover:rounded p-1"
               : "flex items-center space-x-2"
           }`}
         >
@@ -90,9 +94,9 @@ const NavLink = () => {
       <div onClick={(event) => handleLinkClick("link4", event)}>
         <Link
           to="/help"
-          className={`p-2 rounded-md ${
+          className={`flex items-center space-x-2 hover:bg-white hover:text-[#0a1172] hover:rounded p-1 ${
             activeLink === "link4"
-              ? "flex items-center space-x-2 bg-white text-black rounded p-1"
+              ? "flex items-center space-x-2 hover:bg-white hover:text-[#0a1172] hover:rounded p-1"
               : "flex items-center space-x-2"
           }`}
         >
@@ -104,7 +108,11 @@ const NavLink = () => {
       <div>
         <Link
           to="/settings"
-          className="flex items-center space-x-2 hover:bg-white hover:text-black hover:rounded p-1"
+          className={`flex items-center space-x-2 hover:bg-white hover:text-[#0a1172] hover:rounded p-1 ${
+            activeLink === "link5"
+              ? "flex items-center space-x-2 hover:bg-white hover:text-[#0a1172] hover:rounded p-1"
+              : "flex items-center space-x-2"
+          }`}
         >
           <SettingsIcon />
           <span>Settings</span>
