@@ -30,7 +30,9 @@ const TrackShipment = () => {
   useEffect(() => {
     const fetchCurrentOrder = async () => {
       try {
-        const response = await fetch("/api/currentOrder");
+        const response = await fetch(
+          "https://ziplogisitics.pythonanywhere.com/api/complete-customer-order"
+        );
         const data: OrderData = await response.json();
         setCurrentOrder(data);
       } catch (error) {
@@ -49,7 +51,9 @@ const TrackShipment = () => {
     }
 
     try {
-      const response = await fetch(`/api/trackShipment/${trackingID}`);
+      const response = await fetch(
+        `https://ziplogisitics.pythonanywhere.com/api/complete-customer-order`
+      );
       const data: OrderData = await response.json();
       setDriverPosition([
         data.driverLocation?.lat ?? 0,
@@ -93,8 +97,8 @@ const TrackShipment = () => {
                 className="border rounded p-2 mb-2 w-full"
               />
               <button
-                onClick={handleTrackShipment}
-                className="bg-blue-500 text-white py-2 px-4 rounded mt-2"
+                onClick={() => handleTrackShipment}
+                className="bg-[#0a1172] text-white py-2 px-4 rounded mt-2"
               >
                 Track
               </button>

@@ -275,7 +275,7 @@ const SenderAndRecipient: FC = () => {
 
           <Button
             type="submit"
-            className="!bg-[#1e3a8a] !text-white hover:!bg-[#5067a7]"
+            className="!bg-[#0a1172] !text-white hover:!bg-[#1e3a8a]"
             endIcon={<SendIcon />}
           >
             Send
