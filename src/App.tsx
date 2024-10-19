@@ -7,7 +7,7 @@ import SignUp from './components/SignUp/SignUp';
 import DashBoard from './pages/components/DashBoard/Dashboard';
 import PlaceOrder from './pages/components/PlaceOrder/PlaceOrder';
 import TrackShipment from './pages/components/TrackShipment/trackShipment';
-import Notifications from './pages/components/notification/Notification';
+// import Notifications from './pages/components/notification/Notification';
 import ResetPassword from './pages/components/Reset/ResetPassword';
 import NewPassword from './pages/components/Reset/Passwords';
 import Payment from './pages/components/pay/Payment';
@@ -32,7 +32,7 @@ function App() {
 				<Route path='/track-shipment' element={<TrackShipment />} />
 				<Route path='/help' element={<DashBoard />} />
 				<Route path='/settings' element={<DashBoard />} />
-				<Route path='/notification' element={<Notifications />} />
+				{/* <Route path='/notification' element={<Notifications />} /> */}
 
 				<Route path='/reset' element={<ResetPassword />} />
 				<Route path='/new-password' element={<NewPassword />} />
