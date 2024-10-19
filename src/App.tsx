@@ -3,16 +3,17 @@ import { Route, Routes } from 'react-router-dom';
 import ErrorPage from './components/errorPage/ErrorPage';
 import Login from './components/Login/Login';
 import Home from './components/Home';
-import SignUp from './components/SignUp/DriverSignUp';
+import SignUp from './components/SignUp/SignUp';
 import DashBoard from './pages/components/DashBoard/Dashboard';
 import PlaceOrder from './pages/components/PlaceOrder/PlaceOrder';
 import TrackShipment from './pages/components/TrackShipment/trackShipment';
-import Notifications from './pages/components/notification/notification';
+import Notifications from './pages/components/notification/Notification';
 import ResetPassword from './pages/components/Reset/ResetPassword';
 import NewPassword from './pages/components/Reset/Passwords';
 import Payment from './pages/components/pay/Payment';
-import DriverSignUpPage from './components/SignUp/DriverSignUp';
+import DriverSignUpPage from './components/driver/DriverSignUp';
 import ShipmentDetails from './pages/components/PlaceOrder/ShipmentDetails';
+// import DashboardContent from "./pages/components/dashboardPage/DashboardPage";
 
 function App() {
 	return (
@@ -20,7 +21,8 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/login' element={<Login />} />
-				<Route path='/register' element={<SignUp />} />
+				<Route path='/sign-up' element={<SignUp />} />
+				{/* <Route path="dash" element={<DashboardContent />} /> */}
 				<Route path='/dashboard' element={<DashBoard />} />
 
 				<Route path='/driver' element={<DriverSignUpPage />} />

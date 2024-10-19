@@ -16,6 +16,7 @@ interface ShipmentData {
 }
 
 const DashboardContent: React.FC = () => {
+	const [userName, setUserName] = useState('');
 	const [currentShipment, setCurrentShipment] = useState<ShipmentData | null>(
 		null
 	);
@@ -29,10 +30,20 @@ const DashboardContent: React.FC = () => {
 		const fetchData = async () => {
 			try {
 				// Fetch data from backend
-				const currentResponse = await axios.get('/api/current-shipment');
-				const pickupResponse = await axios.get('/api/scheduled-pickup');
-				const historyResponse = await axios.get('/api/order-history');
+				const response = await axios.get(
+					'https://ziplogisitics.pythonanywhere.com/api/get-user-info'
+				);
+				const currentResponse = await axios.get(
+					'https://ziplogisitics.pythonanywhere.com/api/current-shipment'
+				);
+				const pickupResponse = await axios.get(
+					'https://ziplogisitics.pythonanywhere.com/api/scheduled-pickup'
+				);
+				const historyResponse = await axios.get(
+					'https://ziplogisitics.pythonanywhere.com/api/order-history'
+				);
 
+				setUserName(response.data.name);
 				setCurrentShipment(currentResponse.data);
 				setScheduledPickup(pickupResponse.data);
 				setOrderHistory(historyResponse.data);
@@ -50,7 +61,10 @@ const DashboardContent: React.FC = () => {
 		<div className='space-y-6'>
 			{/* PROFILE HEADER */}
 			<ProfileHeader
-				content={<h2 className='text-2xl font-semibold'>Welcome, Aisha</h2>}
+				content={
+					<h2 className='text-2xl font-semibold'>Welcome, {userName}</h2>
+				}
+				userName={''}
 			/>
 			{/* Current Shipment & Scheduled Pickup */}
 			<div className='flex space-x-6'>
@@ -74,7 +88,7 @@ const DashboardContent: React.FC = () => {
 					<div>
 						<button
 							type='button'
-							className='px-4 py-0.5 bg-blue-600 text-white rounded float-right'>
+							className='px-4 py-0.5 bg-[#0a1172] text-white rounded float-right'>
 							<Link to='/place-order'>Place Order</Link>
 						</button>
 					</div>
@@ -98,7 +112,7 @@ const DashboardContent: React.FC = () => {
 					<div>
 						<button
 							type='button'
-							className='px-4 py-0.5 bg-blue-600 text-white rounded float-right'>
+							className='px-4 py-0.5 bg-[#0a1172] text-white rounded float-right'>
 							<Link to='/place-order'>Schedule</Link>
 						</button>
 					</div>
@@ -110,7 +124,7 @@ const DashboardContent: React.FC = () => {
 				<h3 className='text-lg font-bold'>Order History</h3>
 				{/* Filter & Download */}
 				<div className='flex  gap-4 my-4 float-right'>
-					<button className='px-4 py-2 bg-blue-600 text-white rounded'>
+					<button className='px-4 py-2 bg-[#0a1172] text-white rounded'>
 						Filter
 					</button>
 					<button className='px-4 py-2 bg-green-600 text-white rounded'>
