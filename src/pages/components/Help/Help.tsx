@@ -64,10 +64,12 @@ const Help = () => {
 	return (
 		<section className='flex'>
 			{/* SIDEBAR */}
-			<SideBar />
+			<div className='fixed'>
+				<SideBar />
+			</div>
 
 			{/* Main Content */}
-			<main className='w-full px-8 py-5'>
+			<main className='w-full px-8 py-5 ml-64'>
 				<ProfileHeader
 					content={
 						<div className='flex gap-2 items-center text-2xl font-bold'>
