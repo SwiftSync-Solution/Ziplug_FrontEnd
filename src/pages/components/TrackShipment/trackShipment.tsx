@@ -67,12 +67,14 @@ const TrackShipment = () => {
 
   return (
     <>
-      <section className="flex fixed">
+      <section className="flex h-100vh">
         {/* SIDEBAR */}
-        <SideBar />
+        <div className="fixed h-100% overflow-hidden">
+          <SideBar />
+        </div>
 
         {/* Main Content */}
-        <main className="w-full p-8">
+        <main className="p-8 w-full overflow-y-auto ml-64">
           <ProfileHeader
             content={
               <div className="flex gap-2 items-center text-2xl font-bold">
@@ -129,8 +131,8 @@ const TrackShipment = () => {
               <h2 className="text-xl font-bold mb-4">Shipment Map</h2>
               <MapContainer
                 center={defaultPosition}
-                zoom={6}
-                style={{ height: "400px", width: "100%" }}
+                zoom={10}
+                style={{ height: "100vh", width: "100%" }}
               >
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
