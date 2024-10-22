@@ -4,6 +4,7 @@ import ProfileHeader from '../ProfileHeader/ProfileHeader';
 // import NotificationsIcon from "@mui/icons-material/Notifications";
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { Link } from 'react-router-dom';
+import userImage from '../../../../assets/3.jpg';
 
 interface ShipmentData {
 	status: string;
@@ -64,7 +65,7 @@ const DashboardContent: React.FC = () => {
 				content={
 					<h2 className='text-2xl font-semibold'>Welcome, {userName}</h2>
 				}
-				userName={''}
+				profilePic={userImage}
 			/>
 			{/* Current Shipment & Scheduled Pickup */}
 			<div className='flex space-x-6'>
