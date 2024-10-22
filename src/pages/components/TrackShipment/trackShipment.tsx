@@ -127,12 +127,14 @@ const TrackShipment = () => {
             </div>
 
             {/* Map Section */}
-            <div className="col-span-2 mt-8">
-              <h2 className="text-xl font-bold mb-4">Shipment Map</h2>
+            <div className="col-span-2 mt-8 pb-10">
+              <h2 className="text-xl font-bold mb-4 border-r-2">
+                Shipment Map
+              </h2>
               <MapContainer
                 center={defaultPosition}
                 zoom={10}
-                style={{ height: "100vh", width: "100%" }}
+                style={{ height: "100hv", width: "100%" }}
               >
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
