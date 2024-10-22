@@ -1,22 +1,22 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import ErrorPage from './components/errorPage/ErrorPage';
-import Login from './components/Login/Login';
-import Home from './components/Home';
-import SignUp from './components/SignUp/SignUp';
-import DashBoard from './pages/components/DashBoard/Dashboard';
-import PlaceOrder from './pages/components/PlaceOrder/PlaceOrder';
-import TrackShipment from './pages/components/TrackShipment/trackShipment';
-import ResetPassword from './pages/components/Reset/ResetPassword';
-import NewPassword from './pages/components/Reset/Passwords';
-import Payment from './pages/components/pay/Payment';
-import DriverSignUpPage from './components/driver/DriverSignUp';
-import ShipmentDetails from './pages/components/PlaceOrder/ShipmentDetails';
-import PaymentSuccess from './pages/components/PaymentSuccess/PaymentSuccess';
-import OrderDetails from './pages/components/OrderDetails/OrderDetails';
-import Help from './pages/components/Help/Help';
-import Settings from './pages/components/SettingsComp/Settings';
-import Notifications from './pages/components/Notification/Notification';
+import ErrorPage from './Customer/components/errorPage/ErrorPage';
+import Login from './Customer/components/Login/Login';
+import Home from './Customer/components/Home';
+import SignUp from './Customer/components/SignUp/SignUp';
+import DashBoard from './Customer/pages/components/DashBoard/Dashboard';
+import PlaceOrder from './Customer/pages/components/PlaceOrder/PlaceOrder';
+import TrackShipment from './Customer/pages/components/TrackShipment/trackShipment';
+import ResetPassword from './Customer/pages/components/Reset/ResetPassword';
+import NewPassword from './Customer/pages/components/Reset/Passwords';
+import Payment from './Customer/pages/components/pay/Payment';
+import DriverSignUpPage from './Driver/driver/DriverSignUp';
+import ShipmentDetails from './Customer/pages/components/PlaceOrder/ShipmentDetails';
+import PaymentSuccess from './Customer/pages/components/PaymentSuccess/PaymentSuccess';
+import OrderDetails from './Customer/pages/components/OrderDetails/OrderDetails';
+import Help from './Customer/pages/components/Help/Help';
+import Settings from './Customer/pages/components/SettingsComp/Settings';
+import Notifications from './Customer/pages/components/Notification/Notification';
 
 function App() {
 	return (
