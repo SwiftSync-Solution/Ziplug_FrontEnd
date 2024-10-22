@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
-import loginImage from '../../assets/loginImage.png';
-import googleSvg from '../../assets/google.svg';
+import loginImage from '../../../assets/loginImage.png';
+import googleSvg from '../../../assets/google.svg';
 
 interface FormData {
 	email: string;

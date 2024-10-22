@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import contactImage from '../../assets/contactImage.png';
-import chatIcon from '../../assets/chatIcon.png';
-import emailIcon from '../../assets/emailIcon.png';
-import phoneIcon from '../../assets/phoneIcon.png';
-import locationIcon from '../../assets/locationIcon.png';
+import contactImage from '../../../assets/contactImage.png';
+import chatIcon from '../../../assets/chatIcon.png';
+import emailIcon from '../../../assets/emailIcon.png';
+import phoneIcon from '../../../assets/phoneIcon.png';
+import locationIcon from '../../../assets/locationIcon.png';
 
 const Contact: React.FC = () => {
 	return (
