@@ -1,21 +1,27 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import loginImage from '../../../assets/loginImage.png';
 import googleSvg from '../../../assets/google.svg';
-
+import axios from 'axios';
+import auth from '../../../../helper/authenticate';
 interface FormData {
 	email: string;
 	password: string;
 }
 
 const Login: React.FC = () => {
+	const navigate = useNavigate();
+
 	const [formData, setFormData] = useState<FormData>({
 		email: '',
 		password: '',
 	});
 
+	const [error, setError] = useState('');
+
 	// Handles the changes in the form data
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setError('');
 		const { name, value } = e.target;
 		setFormData({
 			...formData,
@@ -24,20 +30,60 @@ const Login: React.FC = () => {
 	};
 
 	// Handles the form submission
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault(); // Prevent the form from reloading the page
 
 		if (!formData.email) {
-			console.log('Enter Valid data in Email');
+			setError('Enter Valid data in Email');
 			return;
 		}
 		if (!formData.password) {
-			console.log('Enter Valid data in Password');
+			setError('Enter Valid data in Password');
 			return;
 		}
 
 		console.log('Form submitted with:', formData);
-		setFormData({ email: '', password: '' });
+
+		// setFormData({ email: '', password: '' });
+
+		try {
+			const token = await axios.post(
+				'https://ziplogistics.pythonanywhere.com/api/token',
+				formData
+			);
+			if (token.status === 401) {
+				setError('Wrong Password or Email');
+				return;
+			}
+			// LOGIN
+			const response = await axios.post(
+				'https://ziplogistics.pythonanywhere.com/api/login-user',
+				formData,
+				{
+					headers: {
+						Authorization: `Bearer ${token.data.access}`,
+					},
+				}
+			);
+
+			if (response.status === 200) {
+				auth.storeTokens(
+					response.data['access-token'],
+					response.data['refresh_token'],
+					response.data['user_id']
+				);
+
+				navigate('/dashboard');
+			}
+
+			console.log(response);
+		} catch (err) {
+			if (err.status === 401) {
+				setError('Wrong Password or Email');
+				return;
+			}
+		}
+
 		// Here you could send the data to a server
 	};
 
@@ -52,6 +98,10 @@ const Login: React.FC = () => {
 						Manage your shipments, track deliveries, and access all your
 						logistics needs in one place.
 					</p>
+
+					{error && (
+						<p className='error-message mb-4 font-bold text-red-700'>{error}</p>
+					)}
 
 					{/* Oauth login */}
 					<button className='mb-5 w-full rounded p-1 border border-grey-900'>
@@ -103,7 +153,7 @@ const Login: React.FC = () => {
 
 					<span>
 						Don&apos;t Have An Account?{' '}
-						<Link to='/register' className='text-blue-600 font-bold'>
+						<Link to='/sign-up' className='text-blue-600 font-bold'>
 							Sign Up
 						</Link>
 					</span>

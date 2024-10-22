@@ -1,6 +1,5 @@
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import userImage from '../../../../assets/3.jpg';
 import { NotificationsNoneOutlined } from '@mui/icons-material';
 // import Notifications from "../notification/notification";
 import { Link } from 'react-router-dom';
@@ -16,7 +15,7 @@ const ProfileHeader = (prop) => {
 					</Link>
 
 					<Stack>
-						<Avatar alt='profile image' src={userImage} />
+						<Avatar alt='profile image' src={prop.profilePic} />
 					</Stack>
 				</div>
 			</header>

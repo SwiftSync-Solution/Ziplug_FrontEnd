@@ -83,7 +83,7 @@ const SignUpPage: React.FC = () => {
 
 			// On successful sign-up
 			setSuccessMessage('Account created successfully!');
-			navigate('/dashboard');
+			navigate('/login');
 		} catch (error: unknown) {
 			// Handle errors from API
 			if (axios.isAxiosError(error) && error.response && error.response.data) {
