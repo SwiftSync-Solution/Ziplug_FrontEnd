@@ -4,17 +4,17 @@ import ProfileHeader from '../ProfileHeader/ProfileHeader';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import sendData from '../../../../../utils/sendData';
-
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 // Define TypeScript interfaces for the form data
 interface FormData {
-	fullName: string;
-	phoneNumber: string;
-	email: string;
-	state: string;
-	city: string;
-	postalCode: string;
-	country: string;
+	customer_full_name: string;
+	customer_phone_number: string;
+	customer_email: string;
+	pickup_address_state: string;
+	pickup_address_city: string;
+	pickup_address_postal_code: string;
+	pickup_address_country: string;
 }
 
 const PlaceOrder: FC = () => {
@@ -44,26 +44,27 @@ const PlaceOrder: FC = () => {
 };
 
 const SenderAndRecipient: FC = () => {
+	const navigate = useNavigate();
 	// State for sender information
 	const [sender, setSender] = useState<FormData>({
-		fullName: '',
-		phoneNumber: '',
-		email: '',
-		state: '',
-		city: '',
-		postalCode: '',
-		country: '',
+		customer_full_name: '',
+		customer_phone_number: '',
+		customer_email: '',
+		pickup_address_state: '',
+		pickup_address_city: '',
+		pickup_address_postal_code: '',
+		pickup_address_country: '',
 	});
 
 	// State for recipient information
-	const [recipient, setRecipient] = useState<FormData>({
-		fullName: '',
-		phoneNumber: '',
-		email: '',
-		state: '',
-		city: '',
-		postalCode: '',
-		country: '',
+	const [recipient, setRecipient] = useState({
+		recipient_full_name: '',
+		recipient_phone_number: '',
+		recipient_email: '',
+		delivery_state: '',
+		delivery_city: '',
+		delivery_postal_code: '',
+		delivery_country: '',
 	});
 
 	// State to track API response or form submission status
@@ -74,6 +75,8 @@ const SenderAndRecipient: FC = () => {
 	// Handle sender input change
 	const handleSenderChange = (e: ChangeEvent<HTMLInputElement>): void => {
 		const { name, value } = e.target;
+		console.log(name, value);
+
 		setSender((prev) => ({ ...prev, [name]: value }));
 	};
 
@@ -96,7 +99,30 @@ const SenderAndRecipient: FC = () => {
 			...recipient,
 		};
 
-		await sendData(formData, setSuccess, setError, setLoading);
+		const token = localStorage.getItem('accessToken');
+		const userId = localStorage.getItem('user_id');
+		const URL = `https://ziplogistics.pythonanywhere.com/api/create-customer-order/${userId}`;
+		// SEND FORM HERE
+		try {
+			const response = await axios.post(URL, formData, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+
+			if (response.status === 201) {
+				setLoading(false);
+				setSuccess('Order successFull');
+				navigate('/shipment-details');
+			}
+		} catch (err) {
+			setLoading(false);
+			if (err.status === 400) {
+				setError('Missing important Fields');
+			} else {
+				setError('Something Went Wrong');
+			}
+		}
 	};
 
 	return (
@@ -130,27 +156,27 @@ const SenderAndRecipient: FC = () => {
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='text'
-								name='fullName'
+								name='customer_full_name'
 								placeholder='Full Name'
-								value={sender.fullName}
+								value={sender.customer_full_name}
 								onChange={handleSenderChange}
 							/>
 							<br />
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='number'
-								name='phoneNumber'
+								name='customer_phone_number'
 								placeholder='Phone Number'
-								value={sender.phoneNumber}
+								value={sender.customer_phone_number}
 								onChange={handleSenderChange}
 							/>
 							<br />
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='email'
-								name='email'
+								name='customer_email'
 								placeholder='Email address'
-								value={sender.email}
+								value={sender.customer_email}
 								onChange={handleSenderChange}
 							/>
 						</div>
@@ -161,36 +187,36 @@ const SenderAndRecipient: FC = () => {
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='text'
-								name='state'
+								name='pickup_address_state'
 								placeholder='State'
-								value={sender.state}
+								value={sender.pickup_address_state}
 								onChange={handleSenderChange}
 							/>
 							<br />
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='text'
-								name='city'
+								name='pickup_address_city'
 								placeholder='City'
-								value={sender.city}
+								value={sender.pickup_address_city}
 								onChange={handleSenderChange}
 							/>
 							<br />
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='number'
-								name='postalCode'
+								name='pickup_address_postal_code'
 								placeholder='Postal Code'
-								value={sender.postalCode}
+								value={sender.pickup_address_postal_code}
 								onChange={handleSenderChange}
 							/>
 							<br />
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='text'
-								name='country'
+								name='pickup_address_country'
 								placeholder='Country'
-								value={sender.country}
+								value={sender.pickup_address_country}
 								onChange={handleSenderChange}
 							/>
 						</div>
@@ -207,27 +233,27 @@ const SenderAndRecipient: FC = () => {
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='text'
-								name='fullName'
+								name='recipient_full_name'
 								placeholder='Full Name'
-								value={recipient.fullName}
+								value={recipient.recipient_full_name}
 								onChange={handleRecipientChange}
 							/>
 							<br />
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='number'
-								name='phoneNumber'
+								name='recipient_phone_number'
 								placeholder='Phone Number'
-								value={recipient.phoneNumber}
+								value={recipient.recipient_phone_number}
 								onChange={handleRecipientChange}
 							/>
 							<br />
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='email'
-								name='email'
+								name='recipient_email'
 								placeholder='Email address'
-								value={recipient.email}
+								value={recipient.recipient_email}
 								onChange={handleRecipientChange}
 							/>
 						</div>
@@ -238,36 +264,36 @@ const SenderAndRecipient: FC = () => {
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='text'
-								name='state'
+								name='delivery_state'
 								placeholder='State'
-								value={recipient.state}
+								value={recipient.delivery_state}
 								onChange={handleRecipientChange}
 							/>
 							<br />
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='text'
-								name='city'
+								name='delivery_city'
 								placeholder='City'
-								value={recipient.city}
+								value={recipient.delivery_city}
 								onChange={handleRecipientChange}
 							/>
 							<br />
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='number'
-								name='postalCode'
+								name='delivery_postal_code'
 								placeholder='Postal Code'
-								value={recipient.postalCode}
+								value={recipient.delivery_postal_code}
 								onChange={handleRecipientChange}
 							/>
 							<br />
 							<input
 								className='border mt-4 rounded w-80 p-1'
 								type='text'
-								name='country'
+								name='delivery_country'
 								placeholder='Country'
-								value={recipient.country}
+								value={recipient.delivery_country}
 								onChange={handleRecipientChange}
 							/>
 						</div>
