@@ -4,7 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { gapi } from "gapi-script";
 
 const CLIENT_ID =
   "180625905651-772r27cegvjf1sn9s7mhq1pbphs5ce93.apps.googleusercontent.com";

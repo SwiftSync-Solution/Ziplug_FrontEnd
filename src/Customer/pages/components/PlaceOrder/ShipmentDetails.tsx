@@ -27,17 +27,23 @@ const ShipmentDetails = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const token = localStorage.getItem("accessToken");
+    const userId = localStorage.getItem("user_id");
+
     try {
       const response = await fetch(
-        "https://ziplogisitics.pythonanywhere.com/api/create-customer-order/{customer_id}",
+        `https://ziplogistics.pythonanywhere.com/api/create-customer-order/${userId}`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(shipmentDetails),
         }
       );
+      console.log(token);
+      console.log(userId);
 
       if (response.ok) {
         console.log("Shipment details submitted successfully!");

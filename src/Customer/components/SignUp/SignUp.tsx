@@ -42,7 +42,7 @@ const SignUpPage: React.FC = () => {
 
       // First, retrieve user information from Google using the access token
       const userInfoResponse = await axios.get(
-        `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${accessToken}`,
+        `https://ziplogistics.pythonanywhere.com/api/create-user/customer/google`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -55,7 +55,7 @@ const SignUpPage: React.FC = () => {
       console.log("User Info:", userInfo);
       // Send the access token to your server for verification/authentication
       const response = await axios.post(
-        "https://ziplogistics.pythonanywhere.com/api/create-user/customer",
+        "https://ziplogistics.pythonanywhere.com/api/create-user/customer/regular",
         {
           token: accessToken,
           userData: userInfo,
