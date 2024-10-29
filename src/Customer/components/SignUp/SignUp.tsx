@@ -33,15 +33,32 @@ const SignUpPage: React.FC = () => {
   const password = watch("password");
 
   // Google Login success handler
-  const handleGoogleLoginSuccess = async (tokenResponse: unknown) => {
+  const handleGoogleLoginSuccess = async (tokenResponse: {
+    access_token: string;
+  }) => {
     try {
       const accessToken = tokenResponse.access_token;
+      // console.log("Google Access Token:", accessToken);
 
+      // First, retrieve user information from Google using the access token
+      const userInfoResponse = await axios.get(
+        `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${accessToken}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            Accept: "application/json",
+          },
+        }
+      );
+      // User info retrieved successfully
+      const userInfo = userInfoResponse.data;
+      console.log("User Info:", userInfo);
       // Send the access token to your server for verification/authentication
       const response = await axios.post(
-        "https://ziplogistics.pythonanywhere.com/api/token",
+        "https://ziplogistics.pythonanywhere.com/api/create-user/customer",
         {
           token: accessToken,
+          userData: userInfo,
         }
       );
 

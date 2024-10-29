@@ -28,13 +28,16 @@ const ShipmentDetails = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/shipment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(shipmentDetails),
-      });
+      const response = await fetch(
+        "https://ziplogisitics.pythonanywhere.com/api/create-customer-order/{customer_id}",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(shipmentDetails),
+        }
+      );
 
       if (response.ok) {
         console.log("Shipment details submitted successfully!");
