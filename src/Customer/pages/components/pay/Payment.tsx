@@ -34,7 +34,10 @@ const Payment: React.FC<PaymentProps> = ({ email, amount }) => {
   const handlePayment = (e: React.FormEvent) => {
     e.preventDefault();
     if (paymentMethod === "Paystack") {
-      initializePayment(onSuccess, onClose);
+      initializePayment({
+        onSuccess: onSuccess,
+        onClose: onClose,
+      });
     }
   };
   return (
