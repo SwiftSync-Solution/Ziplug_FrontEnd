@@ -19,6 +19,7 @@ const Settings = () => {
                 Settings
               </div>
             }
+            profilePic="#"
           />
 
           <Box
