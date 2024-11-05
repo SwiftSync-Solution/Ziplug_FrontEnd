@@ -37,15 +37,15 @@ const SignUpPage: React.FC = () => {
     access_token: string;
   }) => {
     try {
-      const Id_Token = tokenResponse;
-      console.log("Google Access Token:", Id_Token);
+      const accessToken = tokenResponse.access_token;
+      // console.log("Google Access Token:", accessToken);
 
       // First, retrieve user information from Google using the access token
       const userInfoResponse = await axios.get(
         `https://ziplogistics.pythonanywhere.com/api/create-user/customer/google`,
         {
           headers: {
-            Authorization: `Bearer ${Id_Token}`,
+            Authorization: `Bearer ${accessToken}`,
             Accept: "application/json",
           },
         }
@@ -54,16 +54,16 @@ const SignUpPage: React.FC = () => {
       const userInfo = userInfoResponse.data;
       console.log("User Info:", userInfo);
       // Send the access token to your server for verification/authentication
-      // const response = await axios.post(
-      //   "https://ziplogistics.pythonanywhere.com/api/create-user/customer/regular",
-      //   {
-      //     token: accessToken,
-      //     userData: userInfo,
-      //   }
-      // );
+      const response = await axios.post(
+        "https://ziplogistics.pythonanywhere.com/api/create-user/customer/regular",
+        {
+          token: accessToken,
+          userData: userInfo,
+        }
+      );
 
       // Handle success (e.g., store JWT, navigate user to dashboard)
-      console.log("Google OAuth Success:", Response);
+      console.log("Google OAuth Success:", response.data);
       setSuccessMessage("Google login successful! You're now logged in.");
     } catch (error) {
       console.error("Google OAuth Error:", error);
@@ -89,11 +89,12 @@ const SignUpPage: React.FC = () => {
     setLoading(true);
     setErrorMessage("");
     setSuccessMessage("");
+    // /api/create-user/*{placeholder}*
 
     // add "const response to save the user input"
     try {
       await axios.post(
-        "https://ziplogistics.pythonanywhere.com/api/create-user/customer/regular",
+        "https://ziplogistics.pythonanywhere.com/api/create-user/customer",
         {
           email: data.email,
           password: data.password,
@@ -102,7 +103,7 @@ const SignUpPage: React.FC = () => {
 
       // On successful sign-up
       setSuccessMessage("Account created successfully!");
-      navigate("/login");
+      navigate("/dashboard");
     } catch (error: unknown) {
       // Handle errors from API
       if (axios.isAxiosError(error) && error.response && error.response.data) {
@@ -152,7 +153,7 @@ const SignUpPage: React.FC = () => {
 
           <button
             type="button"
-            onClick={() => loginWithGoogle()}
+            onClick={loginWithGoogle}
             className="mb-4 p-2 w-full border border-b-900 rounded flex justify-center items-center shadow-sm hover:bg-gray-50"
           >
             <img className="w-5 h-5 mr-2" src={googleSvg} alt="Google logo" />
