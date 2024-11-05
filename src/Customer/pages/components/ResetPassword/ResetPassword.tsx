@@ -1,6 +1,6 @@
-// import resetBg from '../../../assets/ResetImage.png';
-// import resetBgOvelay from '../../../assets/overlay.png';
-// import { useState } from 'react';
+import resetBg from '../../../assets/ResetImage.png';
+import resetBgOvelay from '../../../assets/overlay.png';
+import { ChangeEvent, useState } from 'react';
 
 // const ResetPassword = () => {
 // 	// State for the form inputs
@@ -8,17 +8,17 @@
 // 	const [error, setError] = useState(false);
 // 	const [errMessage, setErrMessage] = useState('');
 
-// 	// Handle change for each input field
-// 	const handleChange = (e, index) => {
-// 		const newCode = [...code];
-// 		newCode[index] = e.target.value;
-// 		setCode(newCode);
-// 	};
+	// Handle change for each input field
+	const handleChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+		const newCode = [...code];
+		newCode[index] = e.target.value;
+		setCode(newCode);
+	};
 
-// 	// Handle form submission
-// 	const handleSubmit = async (e) => {
-// 		e.preventDefault();
-// 		const codeToSubmit = code.join(''); // Combine all input values into one string
+	// Handle form submission
+	const handleSubmit = async (e: { preventDefault: () => void }) => {
+		e.preventDefault();
+		const codeToSubmit = code.join(''); // Combine all input values into one string
 
 // 		try {
 // 			const response = await fetch('your-api-endpoint', {
@@ -33,16 +33,20 @@
 // 				throw new Error('Failed to reset password');
 // 			}
 
-// 			// Handle successful response
-// 			console.log('Password reset successful');
-// 			setError(false);
-// 		} catch (error) {
-// 			// Handle errors
-// 			setError(true);
-// 			setErrMessage(error.message);
-// 			console.error('Error:', error);
-// 		}
-// 	};
+			// Handle successful response
+			console.log('Password reset successful');
+			setError(false);
+		} catch (error) {
+			// Handle errors
+			setError(true);
+			if (error instanceof Error) {
+				setErrMessage(error.message);
+			} else {
+				setErrMessage('An unknown error occurred');
+			}
+			console.error('Error:', error);
+		}
+	};
 
 // 	return (
 // 		<div className='grid grid-cols-2'>
