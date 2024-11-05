@@ -44,6 +44,7 @@ const Notifications: React.FC = () => {
               Notifications
             </div>
           }
+          profilePic="#"
         />
         <div className="notifications-page p-6">
           <h1 className="text-2xl font-bold mb-6">Notifications</h1>

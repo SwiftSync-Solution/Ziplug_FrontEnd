@@ -82,6 +82,7 @@ const TrackShipment = () => {
                 Track Location
               </div>
             }
+            profilePic="#"
           />
           <div className="shipment-dashboard grid grid-cols-2 gap-4 mt-10 h-screen scroll-smooth">
             {/* Track Shipment Section */}
