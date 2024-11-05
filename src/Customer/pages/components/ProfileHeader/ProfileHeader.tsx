@@ -20,8 +20,8 @@ const ProfileHeader = (prop: ProfileHeaderProps) => {
 					</Link>
 
 					<Stack>
-						{profilePic ? (
-							<Avatar alt='profile image' src={profilePic} />
+						{prop.profilePic ? (
+							<Avatar alt='profile image' src={prop.profilePic} />
 						) : null}
 					</Stack>
 				</div>

@@ -25,7 +25,6 @@ const DashboardContent: React.FC = () => {
 		null
 	);
 	const [orderHistory, setOrderHistory] = useState<ShipmentData[]>([]);
-	const [setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -49,8 +48,6 @@ const DashboardContent: React.FC = () => {
 				setOrderHistory(historyResponse.data);
 			} catch (error) {
 				console.error('Error fetching shipment data', error);
-			} finally {
-				setLoading(false);
 			}
 		};
 

@@ -74,20 +74,11 @@ const Payment: React.FC<PaymentProps> = ({ email, amount }) => {
 									</select>
 								</div>
 
-								{/* <button
-                  type="submit"
-                  className="btn-primary bg-blue-600 text-white px-4 py-2 rounded-md w-full"
-                >
-                  Make Payment
-                </button>
-
-                <button
-                  type="button"
-                  className="btn-secondary mt-4 bg-gray-300 text-gray-800 px-4 py-2 rounded-md w-full"
-                  onClick={() => window.history.back()}
-                >
-                  Go Back
-                </button> */}
+								<button
+									type='submit'
+									className='btn-primary bg-blue-600 text-white px-4 py-2 rounded-md w-full'>
+									Make Payment
+								</button>
 							</form>
 						</div>
 					</div>
@@ -97,12 +88,6 @@ const Payment: React.FC<PaymentProps> = ({ email, amount }) => {
 							className='btn-secondary bg-gray-300 text-gray-800 px-4 py-2 rounded-md'
 							onClick={() => window.history.back()}>
 							Go Back
-						</button>
-
-						<button
-							type='submit'
-							className='btn-primary bg-blue-600 text-white px-4 py-2 rounded-md'>
-							Make Payment
 						</button>
 					</div>
 				</main>
