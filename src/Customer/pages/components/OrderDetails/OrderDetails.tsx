@@ -9,7 +9,15 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DriveEtaIcon from '@mui/icons-material/DriveEta';
 import CallIcon from '@mui/icons-material/Call';
 
-const OrderDetails = ({ content }) => {
+interface OrderDetailsProps {
+	content: {
+		orderId: string;
+		orderDate: string;
+		// Add other properties of content here
+	};
+}
+
+const OrderDetails: React.FC<OrderDetailsProps> = ({ content }) => {
 	return (
 		<>
 			<section className='flex'>

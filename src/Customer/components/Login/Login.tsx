@@ -77,10 +77,11 @@ const Login: React.FC = () => {
 			}
 
 			console.log(response);
-		} catch (err) {
-			if (err.status === 401) {
+		} catch (err: unknown) {
+			if (axios.isAxiosError(err) && err.response?.status === 401) {
 				setError('Wrong Password or Email');
-				return;
+			} else {
+				console.error('An unexpected error occurred:', err);
 			}
 		}
 

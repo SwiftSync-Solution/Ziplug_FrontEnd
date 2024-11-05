@@ -43,7 +43,14 @@ const helpList = [
 	},
 ];
 
-const HelpItem = ({ header, subContent, url, urlName }) => (
+interface HelpItemProps {
+	header: string;
+	subContent: string;
+	url: string;
+	urlName: string;
+}
+
+const HelpItem = ({ header, subContent, url, urlName }: HelpItemProps) => (
 	<Box
 		component='section'
 		className='p-3 border rounded-md flex justify-between items-center'>

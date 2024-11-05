@@ -4,7 +4,12 @@ import { NotificationsNoneOutlined } from '@mui/icons-material';
 // import Notifications from "../notification/notification";
 import { Link } from 'react-router-dom';
 
-const ProfileHeader = (prop) => {
+interface ProfileHeaderProps {
+	content: React.ReactNode;
+	profilePic?: string;
+}
+
+const ProfileHeader = (prop: ProfileHeaderProps) => {
 	return (
 		<>
 			<header className='flex justify-between items-center '>

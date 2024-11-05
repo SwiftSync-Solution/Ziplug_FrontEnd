@@ -115,12 +115,12 @@ const SenderAndRecipient: FC = () => {
 				setSuccess('Order successFull');
 				navigate('/shipment-details');
 			}
-		} catch (err) {
+		} catch (err: unknown) {
 			setLoading(false);
-			if (err.status === 400) {
-				setError('Missing important Fields');
+			if (axios.isAxiosError(err) && err.response?.status === 400) {
+				setError('An error occurred. Please check your data and try again.');
 			} else {
-				setError('Something Went Wrong');
+				console.error('An unexpected error occurred:', err);
 			}
 		}
 	};

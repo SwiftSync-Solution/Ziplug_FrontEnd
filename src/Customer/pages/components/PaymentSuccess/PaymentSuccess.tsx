@@ -2,7 +2,11 @@ import SideBar from '../sideNav/SideBar';
 import ProfileHeader from '../ProfileHeader/ProfileHeader';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
-const PaymentSuccess = ({ orderNumber }) => {
+interface PaymentSuccessProps {
+	orderNumber: string;
+}
+
+const PaymentSuccess = ({ orderNumber }: PaymentSuccessProps) => {
 	return (
 		<>
 			<section className='flex'>

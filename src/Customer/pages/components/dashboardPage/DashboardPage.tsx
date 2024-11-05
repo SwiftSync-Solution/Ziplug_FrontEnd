@@ -55,7 +55,7 @@ const DashboardContent: React.FC = () => {
 			}
 		};
 
-		// fetchData(); //! donot call or you would get an error
+		fetchData();
 	}, []);
 
 	return (
