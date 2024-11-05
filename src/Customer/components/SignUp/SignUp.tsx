@@ -153,7 +153,7 @@ const SignUpPage: React.FC = () => {
 
           <button
             type="button"
-            onClick={loginWithGoogle}
+            onClick={() => loginWithGoogle()}
             className="mb-4 p-2 w-full border border-b-900 rounded flex justify-center items-center shadow-sm hover:bg-gray-50"
           >
             <img className="w-5 h-5 mr-2" src={googleSvg} alt="Google logo" />
