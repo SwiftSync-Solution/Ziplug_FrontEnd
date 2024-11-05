@@ -1,5 +1,5 @@
-import SideBar from "../sideNav/SideBar";
-import ProfileHeader from "../ProfileHeader/ProfileHeader";
+import SideBar from "../../../Customer/pages/components/sideNav/SideBar";
+import ProfileHeader from "../../../Customer/pages/components/ProfileHeader/ProfileHeader";
 import { useState } from "react";
 import AddLocationIcon from "@mui/icons-material/AddLocation";
 import { useEffect } from "react";
@@ -128,9 +128,7 @@ const TrackShipment = () => {
 
             {/* Map Section */}
             <div className="col-span-2 mt-8 pb-10">
-              <h2 className="text-xl font-bold mb-4 border-r-2">
-                Shipment Map
-              </h2>
+              <h2 className="text-xl font-bold mb-4 ">Shipment Map</h2>
               <MapContainer
                 center={defaultPosition}
                 zoom={10}
